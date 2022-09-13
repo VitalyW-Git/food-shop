@@ -12,6 +12,7 @@ export default function Showcase () {
     const products = useSelector(state => state.showcase.products)
     const fetchStatus = useSelector(state => state.showcase.status)
 
+    /** запускается при инициализации компонента */
     useEffect(() => {
         dispatch(fetchProducts())
     }, [dispatch])
