@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 
-export default function Product({title, price, id}) {
+export default function Product({title, price, id}){
 
     const dispatch = useDispatch()
     const addMushrooms = () => dispatch({type: 'basket/addMushrooms', payload: price}) 

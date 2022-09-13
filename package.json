@@ -1,8 +1,16 @@
 {
-  "name": "basket-showcase-redux",
+  "name": "webshop-with-backend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.9.2",
+    "helmet": "^4.4.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",

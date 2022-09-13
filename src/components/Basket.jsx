@@ -10,7 +10,7 @@ export default function Basket () {
     const dispatch = useDispatch()
     const toggleSpoiled = () => {
         dispatch({type: 'basket/toggleSpoiled'})
-        const url = isSpoiled ? 'products.json' : 'nowhere'
+        const url = isSpoiled ? '/api/products' : 'nowhere'
         dispatch(fetchProducts(url))
     }
 
