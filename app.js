@@ -1,14 +1,19 @@
-const express = require('express');
-const app = express();
-const path = require('path');
+import express from "express";
+import path from "path";
+import {productRouter} from './backend/routes/router-products.js';
 
-const indexRouter = require('./backend/routes');
+const app = express();
+const __dirname = path.resolve();
 
 const port = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname, 'build')));
-app.use('/api', indexRouter);
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.use(express.static(path.resolve(__dirname, 'build')));
+app.use('/api', productRouter);
+app.listen(port, () => {
+    console.log(`Сервер запущен localhost:${port}!`)
+});
+
+
 /*
 const express = require('express');
 const path = require('path');

@@ -6,7 +6,7 @@ import Product from './Product'
 import Progress from './Progress'
 import Failure from './Failure'
 
-export default function Showcase () {
+export function Showcase() {
 
     const dispatch = useDispatch()
     const products = useSelector(state => state.showcase.products)

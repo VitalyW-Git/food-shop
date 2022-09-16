@@ -2,9 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux';
 
-import { store } from './store';
-import Basket from './components/Basket'
-import Showcase from './components/Showcase'
+import { store } from './store/index.js';
+import { Basket } from './components/Basket.jsx'
+import { Showcase } from './components/Showcase.jsx'
 
 const basket = ReactDOM.createRoot(document.getElementById('basket'))
 basket.render(

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from '../store/showcase'
 import classNames from 'classnames'
 
-export default function Basket () {
+export function Basket () {
 
 
     const total = useSelector(state => state.basket.total)
