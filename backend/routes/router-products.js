@@ -1,5 +1,5 @@
-import {Router} from "express";
-const productRouter = Router();
+import express from "express";
+const productRouter = express.Router();
 import {getAllProducts} from '../controllers/controller-products.js';
 // const OrderController = require('../controllers/orders');
 // const {check, validationErrors} = require('express-validator');

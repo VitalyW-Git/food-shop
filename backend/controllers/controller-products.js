@@ -5,6 +5,9 @@ export function getAllProducts(req, res, next) {
         .then(products => {
             res.json(products)
         })
-        .catch(err => res.send(err))
+        .catch(err => {
+            console.log(`Ошибка на стороне сервера: ${err.message}!`)
+            res.status(500).send(err.message)
+        })
 }
 

@@ -5,10 +5,11 @@ import {productRouter} from './backend/routes/router-products.js';
 const app = express();
 const __dirname = path.resolve();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3004;
 
 app.use(express.static(path.resolve(__dirname, 'build')));
 app.use('/api', productRouter);
+
 app.listen(port, () => {
     console.log(`Сервер запущен localhost:${port}!`)
 });
