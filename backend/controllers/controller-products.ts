@@ -1,6 +1,7 @@
+import {Request, Response, NextFunction} from "express";
 import {fetchAllProducts} from '../models/model-product.js';
 
-export function getAllProducts(req, res, next) {
+const getAllProducts = async (req: Request, res: Response, next: NextFunction) => {
     fetchAllProducts()
         .then(products => {
             res.json(products)
@@ -11,3 +12,4 @@ export function getAllProducts(req, res, next) {
         })
 }
 
+export { getAllProducts };
