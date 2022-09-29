@@ -13,11 +13,11 @@ export function selectAllProducts() {
 
 export function insertProduct(title, price) {
     return new Promise((resolve, reject) => {
-        connectDb.query('INSERT INTO products (title, price) VALUES (?, ?)', [title, price], (err, products, fields) => {
+        connectDb.query('INSERT INTO products (title, price, date_time) VALUES (?, ?, CURRENT_TIMESTAMP)', [title, price], (err, products, fields) => {
             if (err) {
                 reject(err)
             }
-            resolve(54);
+            resolve(products.insertId);
         })
     })
 }

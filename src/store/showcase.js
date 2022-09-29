@@ -42,7 +42,13 @@ const showcaseSlice = createSlice({
             state.products = []
             state.error = action.payload
         }
-    }
+    },
+
+    reducers: {
+        addProduct: (state, action) => {
+            state.products = [action.payload, ...state.products]
+        },
+    },
 });
 
 export const { actions, reducer } = showcaseSlice

@@ -26,9 +26,9 @@ export function Showcase() {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({title, price})
         }).then(res => {
-            return res.text()
-        }).then(txt => {
-            console.log(txt)
+            return res.json()
+        }).then(id => {
+            dispatch({type: 'showcase/addProduct', payload: {id, title, price} })
         })
     }
 
