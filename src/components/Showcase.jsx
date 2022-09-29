@@ -16,8 +16,29 @@ export function Showcase() {
         dispatch(fetchProducts())
     }, [dispatch])
 
+    function addProduct(e) {
+        e.preventDefault()
+        let {title, price} = e.target
+        title = title.value
+        price = price.value
+        fetch('/api/products', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({title, price})
+        }).then(res => {
+            return res.text()
+        }).then(txt => {
+            console.log(txt)
+        })
+    }
+
     return (
         <>
+            <form onSubmit={addProduct}>
+                <input type="text" placeholder="Название продукта" name="title"/>
+                <input type="text" placeholder="Цена продукта" name="price"/>
+                <input type="submit" value="Добавить продукт"/>
+            </form>
             {fetchStatus === 'loading' && <Progress />}
             {fetchStatus === 'failed' && <Failure />}
             {fetchStatus === 'succeeded' && products.map(el => <Product {...el} key={el.id} />)}
