@@ -21,3 +21,14 @@ export function insertProduct(title, price) {
         })
     })
 }
+
+export function removeProduct(id) {
+    return new Promise((resolve, reject) => {
+        connectDb.query('DELETE FROM products WHERE id = ?', [id], (err, products, fields) => {
+            if (err) {
+                reject(err)
+            }
+            resolve(true);
+        })
+    })
+}

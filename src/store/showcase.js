@@ -48,6 +48,10 @@ const showcaseSlice = createSlice({
         addProduct: (state, action) => {
             state.products = [action.payload, ...state.products]
         },
+        deleteMushroom: (state, action) => {
+            console.log(action)
+            state.products = state.products.filter(item => item.id !== action.payload)
+        }
     },
 });
 
