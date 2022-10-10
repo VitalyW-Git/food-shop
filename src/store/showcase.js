@@ -9,6 +9,7 @@ export const fetchProducts = createAsyncThunk('showcase/fetchProducts', async (u
         const response = await fetch(url)
         await waitForProgress(2000)
         if(!response.ok) throw new Error('Во время загрузки списка продуктов произошла ошибка.')
+        console.log(response)
         return await response.json()
     }
     catch(err){

@@ -3,8 +3,6 @@ import { fetchProducts } from '../store/showcase'
 import classNames from 'classnames'
 
 export function Basket () {
-
-
     const total = useSelector(state => state.basket.total)
     const isSpoiled = useSelector(state => state.basket.isSpoiled)
     const dispatch = useDispatch()

@@ -1,4 +1,38 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import {fetchProducts} from "./showcase.js";
+
+export const addNewProduct = createAsyncThunk(
+    'basket/addNewProduct',
+    async function (params, {rejectWithValue, dispatch}) {
+        try {
+            const id = params.id
+            const title = params.titleValue
+            const price = params.priceValue
+            const response = await fetch('/api/products', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({id, title, price})
+            });
+
+            if (!response.ok) {
+                throw new Error('Во время обновления продукта произошла ошибка');
+            }
+
+            const data = await response.json();
+            if (data) {
+                dispatch(fetchProducts('/api/products'))
+            }
+            if (!data) {
+                throw new Error('Во время обновления продукта произошла ошибка');
+            }
+
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
 
 const showcaseSlice = createSlice({
     name: 'basket',

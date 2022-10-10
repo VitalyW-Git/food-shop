@@ -32,3 +32,16 @@ export function removeProduct(id) {
         })
     })
 }
+
+export function updateProduct(id, title, price) {
+    let setTitle = title
+    let setPrice = price
+    return new Promise((resolve, reject) => {
+        connectDb.query('UPDATE products SET title = ?, price = ? WHERE id = ?', [setTitle, setPrice, id], (err, products, fields) => {
+            if (err) {
+                reject(err)
+            }
+            resolve(true);
+        })
+    })
+}

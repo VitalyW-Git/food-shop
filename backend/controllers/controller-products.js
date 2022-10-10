@@ -1,4 +1,4 @@
-import {selectAllProducts, insertProduct, removeProduct} from '../models/model-product.js';
+import {selectAllProducts, insertProduct, removeProduct, updateProduct} from '../models/model-product.js';
 
 /** CRUD = create read update delete */
 export function getAllProducts(req, res, next) {
@@ -7,7 +7,7 @@ export function getAllProducts(req, res, next) {
             res.json(products)
         })
         .catch(err => {
-            console.log(`Ошибка на стороне сервера: ${err.message}!`)
+            console.log(`Получить все записи ошибка на стороне сервера: ${err.message}!`)
             res.status(500).send(err.message)
         })
 }
@@ -19,7 +19,7 @@ export function createProduct(req, res, next) {
             res.json(products)
         })
         .catch(err => {
-            console.log(`Ошибка на стороне сервера: ${err.message}!`)
+            console.log(`При создании записи ошибка на стороне сервера: ${err.message}!`)
             res.status(500).send(err.message)
         })
 }
@@ -31,7 +31,19 @@ export function deleteProduct(req, res, next) {
             res.json(products)
         })
         .catch(err => {
-            console.log(`Ошибка на стороне сервера: ${err.message}!`)
+            console.log(`При удалении продукта ошибка на стороне сервера: ${err.message}!`)
+            res.status(500).send(err.message)
+        })
+}
+
+export function putProduct(req, res, next) {
+    const {id, title, price} = req.body
+    updateProduct(id, title, price)
+        .then(products => {
+            res.json(products)
+        })
+        .catch(err => {
+            console.log(`При обновлении продукта ошибка на стороне сервера: ${err.message}!`)
             res.status(500).send(err.message)
         })
 }
