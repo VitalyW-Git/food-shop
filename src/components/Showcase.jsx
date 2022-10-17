@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchProducts } from '../store/showcase'
+import { fetchProducts, addProduct as _addProduct } from '../store/showcase'
 import Product from './Product'
 import Progress from './Progress'
 import Failure from './Failure'
@@ -21,15 +21,7 @@ export function Showcase() {
         let {title, price} = e.target
         title = title.value
         price = price.value
-        fetch('/api/products', {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({title, price})
-        }).then(res => {
-            return res.json()
-        }).then(id => {
-            dispatch({type: 'showcase/addProduct', payload: {id, title, price} })
-        })
+        dispatch(_addProduct({title, price}))
     }
 
     return (

@@ -17,6 +17,34 @@ export const fetchProducts = createAsyncThunk('showcase/fetchProducts', async (u
     }
 })
 
+export const addProduct = createAsyncThunk(
+    'showcase/addProduct',
+    async (params, rejectWithValue) => {
+    try {
+        console.log(params)
+        const {title, price} = params
+        const response = await fetch('/api/products', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({title, price})
+        });
+        console.log(response)
+        if (!response.ok) {
+            console.log(21)
+            throw new Error('Во время добавления продукта произошла ошибка.')
+        }
+        await waitForProgress(2000)
+
+        if(!response.ok) throw new Error('Во время загрузки списка продуктов произошла ошибка.')
+        console.log(response)
+        return await response.json()
+    } catch(err) {
+        rejectWithValue(err.message)
+    }
+})
+
 const showcaseSlice = createSlice({
     name: 'showcase',
     initialState: {
@@ -41,6 +69,21 @@ const showcaseSlice = createSlice({
             state.status = 'failed'
             state.progressVisibility = false
             state.products = []
+            state.error = action.payload
+        },
+
+        [addProduct.pending]: state => {
+            state.status = 'loading'
+            state.progressVisibility = true
+            state.error = null
+        },
+        [addProduct.fulfilled]: (state, action) => {
+            state.status = 'succeeded'
+            state.progressVisibility = false
+        },
+        [addProduct.rejected]: (state, action) => {
+            state.status = 'failed'
+            state.progressVisibility = false
             state.error = action.payload
         }
     },
