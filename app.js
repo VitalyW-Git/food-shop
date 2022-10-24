@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import bodyParser from 'body-parser';
+import cookieParser from "cookie-parser";
 import {productRouter} from './backend/routes/products.js';
 import {loginRouter} from './backend/routes/login.js';
 
@@ -8,16 +9,16 @@ const app = express();
 const __dirname = path.resolve();
 
 const port = process.env.PORT || 3004;
-
 app.use(express.static(path.resolve(__dirname, 'build')));
 
 app.use(bodyParser.json());
 
 app.use('/api', productRouter);
 app.use('/login', loginRouter);
+app.use(cookieParser());
 
 app.listen(port, () => {
-    console.log(`Сервер запущен localhost:${port}!`)
+    console.log(`Сервер запущен localhost: ${port}`)
 });
 
 
