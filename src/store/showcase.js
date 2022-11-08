@@ -4,10 +4,16 @@ function waitForProgress(timeout){
     return new Promise((yep, non) => setTimeout(yep, timeout))
 }
 
-export const fetchProducts = createAsyncThunk('showcase/fetchProducts', async (url = '/api/products', rejectWithValue) => {
+export const fetchProducts = createAsyncThunk(
+    'showcase/fetchProducts',
+    async (url = '/api/products', rejectWithValue) => {
     try {
+        console.log(url)
         const response = await fetch(url)
         await waitForProgress(2000)
+        if (response.status === 401) {
+            window.top.location = '/login'
+        }
         if(!response.ok) throw new Error('Во время загрузки списка продуктов произошла ошибка.')
         console.log(response)
         return await response.json()
@@ -21,7 +27,6 @@ export const addProduct = createAsyncThunk(
     'showcase/addProduct',
     async (params, rejectWithValue) => {
     try {
-        console.log(params)
         const {title, price} = params
         const response = await fetch('/api/products', {
             method: 'POST',
@@ -30,16 +35,18 @@ export const addProduct = createAsyncThunk(
             },
             body: JSON.stringify({title, price})
         });
-        console.log(response)
+        if (response.status === 401) {
+            window.top.location = '/login'
+        }
         if (!response.ok) {
-            console.log(21)
             throw new Error('Во время добавления продукта произошла ошибка.')
         }
         await waitForProgress(2000)
 
         if(!response.ok) throw new Error('Во время загрузки списка продуктов произошла ошибка.')
-        console.log(response)
+
         return await response.json()
+
     } catch(err) {
         rejectWithValue(err.message)
     }

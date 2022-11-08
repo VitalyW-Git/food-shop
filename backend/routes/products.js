@@ -6,7 +6,7 @@ import {
     createProduct,
     deleteProduct,
     putProduct
-} from '../controllers/controller-products.js';
+} from '../controllers/product.js';
 
 
 // const OrderController = require('../controllers/orders');

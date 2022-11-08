@@ -8,7 +8,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const loginRouter = express.Router();
 
 loginRouter.get('/', (req, res) => {
-    const html = readFileSync("./public/login.html", "utf8")
+    const html = readFileSync("./public/registration.html", "utf8")
     res.end(html)
 });
 

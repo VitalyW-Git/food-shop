@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {addNewProduct} from "../store/basket.js";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label } from 'reactstrap';
 

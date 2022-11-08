@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cookieParser from "cookie-parser";
 import {productRouter} from './backend/routes/products.js';
 import {loginRouter} from './backend/routes/login.js';
+import {testRouter} from './backend/routes/test.js';
 
 const app = express();
 const __dirname = path.resolve();
@@ -13,9 +14,12 @@ app.use(express.static(path.resolve(__dirname, 'build')));
 
 app.use(bodyParser.json());
 
+app.use(cookieParser());
+
 app.use('/api', productRouter);
 app.use('/login', loginRouter);
-app.use(cookieParser());
+app.use('/test', testRouter);
+
 
 app.listen(port, () => {
     console.log(`Сервер запущен localhost: ${port}`)

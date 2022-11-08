@@ -1,4 +1,4 @@
-import {selectAllProducts, insertProduct, removeProduct, updateProduct} from '../models/model-product.js';
+import {selectAllProducts, insertProduct, removeProduct, updateProduct} from '../models/product.js';
 
 /** CRUD = create read update delete */
 export function getAllProducts(req, res, next) {

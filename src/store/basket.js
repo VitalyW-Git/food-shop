@@ -15,7 +15,9 @@ export const addNewProduct = createAsyncThunk(
                 },
                 body: JSON.stringify({id, title, price})
             });
-
+            if (response.status === 401) {
+                window.top.location = '/login'
+            }
             if (!response.ok) {
                 throw new Error('Во время обновления продукта произошла ошибка');
             }
