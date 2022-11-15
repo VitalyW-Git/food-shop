@@ -1,10 +1,10 @@
-import { Layout } from './components/Layout.jsx'
+import Layout from './components/Layout.jsx'
 import { Routes, Route } from 'react-router-dom'
-import { MainPage } from './pages/main/MainPage.jsx'
-import { RegisterUser } from './pages/auth/RegisterUser.jsx'
-import { LoginUser } from './pages/auth/LoginUser.jsx'
+import MainPage from './pages/main/MainPage.jsx'
+import RegisterUser from './pages/auth/RegisterUser.jsx'
+import LoginUser from './pages/auth/LoginUser.jsx'
 
-function App() {
+export default function App() {
     return (
         <Layout>
             <Routes>
@@ -15,5 +15,3 @@ function App() {
         </Layout>
     )
 }
-
-export default App
