@@ -1,21 +1,21 @@
-// import { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { addProduct as _addProduct } from '../store/showcase'
+import {fetchProducts} from "../store/showcase.js";
 import Product from './Product'
 import Progress from './Progress'
 import Failure from './Failure'
 
 export function Showcase() {
 
-    // const withAuth = document.cookie
     const dispatch = useDispatch()
     const products = useSelector(state => state.showcase.products)
     const fetchStatus = useSelector(state => state.showcase.status)
 
-    // useEffect(() => {
-    //     dispatch(fetchProducts())
-    // }, [dispatch])
+    useEffect(() => {
+        dispatch(fetchProducts())
+    }, [dispatch])
 
     function addProduct(e) {
         e.preventDefault()

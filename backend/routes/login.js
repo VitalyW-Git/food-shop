@@ -8,29 +8,20 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const loginRouter = express.Router();
 
 loginRouter.get('/', (req, res) => {
-    const html = readFileSync("./public/login.html", "utf8")
+    const html = readFileSync("./backend/assets/login.html", "utf8")
     res.end(html)
 });
 
 loginRouter.post('/', urlencodedParser, (req, res) => {
 
     const token = createToken({ id: req.body.password });
-
     res.cookie('refreshToken', token,{
         httpOnly: true,
         secure: true,
         maxAge: 3600,
-        path: '/test'
+        path: '/'
     });
-
-    res.redirect('/test')
-
-    // const object = res.json({
-    //     access_token: token,
-    //     token_type: 'Bearer',
-    //     expires_in: jwtConfig.ttl
-    // });
-
+    res.redirect('/')
 })
 
 export {loginRouter};
