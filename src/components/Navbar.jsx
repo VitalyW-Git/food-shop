@@ -16,6 +16,10 @@ export default function Navbar () {
     const [flyer, setFlyer] = useState(false);
     const [flyerTwo, setFlyerTwo] = useState(false);
 
+    function showMobileMenu(value) {
+        setOpen(value)
+    }
+
     const handlerSolution = () => {
         setFlyer(!flyer)
         setFlyerTwo(false)
@@ -303,7 +307,10 @@ export default function Navbar () {
                         </div>
                     </div>
                 </div>
-            <MenuMobile show={open}/>
+            <MenuMobile
+                show={open}
+                showMobileMenu={showMobileMenu}
+            />
             </div>
         </>
     )

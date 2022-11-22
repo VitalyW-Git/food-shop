@@ -6,10 +6,10 @@ import security from "../img/svg/security.svg";
 import integrations from "../img/svg/integrations.svg";
 import automations from "../img/svg/automations.svg";
 
-export default function MenuMobile (open) {
+export default function MenuMobile ({show, showMobileMenu}) {
     return (
         <>
-            <div className={open
+            <div className={show
                 ? "opacity-100 scale-100 transition ease-out duration-200 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
                 : "opacity-0 scale-95 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
             }
@@ -26,7 +26,7 @@ export default function MenuMobile (open) {
                             <div className="-mr-2">
                                 <button type="button"
                                         className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-                                        onClick={() => setOpen(!open)}
+                                        onClick={() => showMobileMenu(!show)}
                                 >
                                     <span className="sr-only">Close menu</span>
                                     <img src={close} alt="" className="flex-shrink-0 h-6 w-6 text-indigo-600"/>
