@@ -1,13 +1,13 @@
 import express from "express";
-import path from "path";
-import {productRouter} from './backend/routes/router-products.js';
+// import path from "path";
+import {productRouter} from './routes/router-products';
 
 const app = express();
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
 const port = process.env.PORT || 3004;
 
-app.use(express.static(path.resolve(__dirname, 'build')));
+// app.use(express.static(path.resolve(__dirname, 'build')));
 app.use('/api', productRouter);
 
 app.listen(port, () => {
