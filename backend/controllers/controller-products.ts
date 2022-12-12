@@ -1,11 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import {connectDb, queryDb} from '../config/mysql';
-import IProduct from "../interfaces";
+import IProduct from "../interfaces/product";
 import mysql from 'mysql';
 
 const getAllProducts = async (req: Request, res: Response, next: NextFunction) => {
     let query = 'SELECT * FROM products';
-
     connectDb()
         .then(connection => {
             // if (!(connection instanceof mysql.Connection)) {

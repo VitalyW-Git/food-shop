@@ -1,0 +1,45 @@
+{
+    "env": {  // где будет исполняться наш код
+        "browser": true,
+        "es2021": true,
+        "jest": true,
+        "es6": true, // для поддержки sc6
+        "node": true // для поддержки node переменных
+    },
+    /*
+    Пресет с настройками. prettier должен быть последним.
+ Он удаляет некоторые правила eslint из-за которых могут возникать конфликты.
+    */
+    "extends": [
+        "react-app",
+        "react-app/jest",
+        "airbnb",
+        "airbnb-typescript",
+        "plugin:import/typescript",
+        "plugin:prettier/recommended",
+        "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest", // версия стандарта JavaScript. Последний 12 (2021).
+        "sourceType": "module", // Позволяет использовать import/export
+        "project": "./tsconfig.json"
+    },
+    // Здесь подключаем используемые плагины.
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "prettier"
+
+    ],
+    "rules": {
+        "prettier/prettier": "error", // Обязательно!! Подсвечивает ошибки из Prettier.
+        "react/react-in-jsx-scope": ["off"],
+        "react/jsx-uses-react": ["off"],
+        "react/jsx-props-no-spreading": ["warn"],
+        "react/no-unescaped-entities": ["off"]
+    }
+}

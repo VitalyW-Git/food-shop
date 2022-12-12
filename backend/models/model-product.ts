@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import {connectDb, queryDb} from '../config/mysql';
-import IProduct from "../interfaces";
+import IProduct from "../interfaces/product";
 
 const fetchAllProducts = async (req: Request, res: Response, next: NextFunction) => {
     // return new Promise((resolve, reject) => {
@@ -28,9 +28,9 @@ const fetchAllProducts = async (req: Request, res: Response, next: NextFunction)
                         error
                     });
                 })
-                // .finally(() => {
-                //     connection.end();
-                // });
+                .finally(() => {
+                    connection.end();
+                });
         })
         .catch((error) => {
             return res.status(200).json({

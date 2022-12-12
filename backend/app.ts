@@ -1,19 +1,15 @@
-import express from "express";
-// import path from "path";
-import {productRouter} from './routes/router-products';
+import express, { Application } from "express";
+import { productRouter } from "./routes/router-products";
 
-const app = express();
-// const __dirname = path.resolve();
+const app: Application = express();
 
 const port = process.env.PORT || 3004;
 
-// app.use(express.static(path.resolve(__dirname, 'build')));
-app.use('/api', productRouter);
+app.use("/api", productRouter);
 
 app.listen(port, () => {
-    console.log(`Сервер запущен localhost:${port}!`)
+  console.log(`Сервер запущен localhost:${port}!`);
 });
-
 
 /*
 const express = require('express');
