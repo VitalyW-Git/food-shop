@@ -15,7 +15,7 @@
         "react-app/jest",
         "airbnb",
         "airbnb-typescript",
-        "plugin:import/typescript",
+        "plugin:import/recommended",
         "plugin:prettier/recommended",
         "prettier"
     ],
@@ -32,14 +32,41 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "prettier"
-
+        "prettier",
+        "eslint-plugin-import"
     ],
     "rules": {
         "prettier/prettier": "error", // Обязательно!! Подсвечивает ошибки из Prettier.
         "react/react-in-jsx-scope": ["off"],
         "react/jsx-uses-react": ["off"],
         "react/jsx-props-no-spreading": ["warn"],
-        "react/no-unescaped-entities": ["off"]
+        "react/no-unescaped-entities": ["off"],
+        "react/no-array-index-key": "off",
+        "react-hooks/exhaustive-deps": ["off"],
+        "no-param-reassign": [2, { "props": false }],
+        "@typescript-eslint/no-unused-vars": "off",
+        "jsx-a11y/no-static-element-interactions": [
+            "error",
+            {
+                "handlers": [
+                    "onClick",
+                    "onMouseDown",
+                    "onMouseUp",
+                    "onKeyPress",
+                    "onKeyDown",
+                    "onKeyUp"
+                ],
+                "allowExpressionValues": true
+            }
+        ],
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off",
+        "react/self-closing-comp": ["error", {
+            "component": true,
+            "html": true
+        }],
+        "import/prefer-default-export": "off"
+//        "no-unused-vars": "off",
+//        "@typescript-eslint/no-unused-vars": ["error"]
     }
 }
