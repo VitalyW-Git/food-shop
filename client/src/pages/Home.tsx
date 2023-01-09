@@ -18,6 +18,7 @@ import {
 import { fetchPizzas } from "../redux/pizza/asyncActions";
 // import { SearchPizzaParams } from '../redux/pizza/types';
 
+/** Главная страница */
 function Home() {
   // const navigate = useNavigate();
   const dispatch = useAppDispatch();

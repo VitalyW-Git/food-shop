@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCartItemById } from "../../redux/cart/selectors";
@@ -28,13 +28,18 @@ function PizzaBlock({
   rating,
 }: PizzaBlockProps) {
   const dispatch = useDispatch();
+  /** item заказа в корзине */
   const cartItem = useSelector(selectCartItemById(id));
-  const [activeType, setActiveType] = React.useState(0);
-  const [activeSize, setActiveSize] = React.useState(0);
+  const [activeType, setActiveType] = useState(0);
+  const [activeSize, setActiveSize] = useState(0);
 
   const addedCount = cartItem ? cartItem.count : 0;
 
-  const onClickAdd = () => {
+  /**
+   * добавить пиццу в корзину
+   * формируем данные
+   */
+  const onAddPizzaCart = () => {
     const item: CartItem = {
       id,
       title,
@@ -83,7 +88,7 @@ function PizzaBlock({
           <div className="pizza-block__price">от {price} ₽</div>
           <button
             type="submit"
-            onClick={onClickAdd}
+            onClick={onAddPizzaCart}
             className="button button--outline button--add"
           >
             <svg
